@@ -19,6 +19,11 @@ $ cd holygrail
 $ boot dev
 #+END_SRC
 
+** Ideas to Implement
+*** TODO Task to autodownload Datomic if it's not installed locally
+*** TODO Add Datomic component
+*** TODO Seed Datomic in-memory database for local development
+
 ** Principle of operation
 *** Manual
 You want to operate with a REPL, start the system, and reset it when you make changes.
