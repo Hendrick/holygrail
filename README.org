@@ -1,6 +1,6 @@
 * Holy grail
 
-#+BEGIN_QUOTE 
+#+BEGIN_QUOTE
  Well, on second thought, let's not go to Camelot -- it is
 a silly place. — King Arthur
 #+END_QUOTE
@@ -9,12 +9,12 @@ a silly place. — King Arthur
 
 This demonstrates the *holy grail* workflow for web development the way I envision it: an auto-restartable back-end in the REPL + a hot-reloadable front-end in the browser.
 
-This workflow is built on top of [[http://boot-clj.com/][Boot]], a build tool, and [[https://github.com/danielsz/system/tree/master/examples/boot][system]], a component library.  
+This workflow is built on top of [[http://boot-clj.com/][Boot]], a build tool, and [[https://github.com/danielsz/system/tree/master/examples/boot][system]], a component library.
 
 ** Installation
 Clone this repo, cd into it and start the development pipeline build.
 #+BEGIN_SRC shell
-$ git clone git@github.com:danielsz/holygrail.git
+$ git clone git@github.com:Hendrick/holygrail.git
 $ cd holygrail
 $ boot dev
 #+END_SRC
@@ -23,7 +23,7 @@ $ boot dev
 *** Manual
 You want to operate with a REPL, start the system, and reset it when you make changes.
 
-Compose a build pipeline: 
+Compose a build pipeline:
 
 #+BEGIN_SRC clojure
 (deftask dev
@@ -38,7 +38,7 @@ Compose a build pipeline:
    (repl :server true)))
 #+END_SRC
 
-Start it: 
+Start it:
 
 #+BEGIN_SRC shell
 $ boot dev
@@ -55,7 +55,7 @@ type:
 (go)
 #+END_SRC
 
-Your web app is started and listening at [[http://localhost:3000]]. When you make changes that require a system restart, type in the REPL: 
+Your web app is started and listening at [[http://localhost:3000]]. When you make changes that require a system restart, type in the REPL:
 
 #+BEGIN_SRC clojure
 (reset)
@@ -63,20 +63,20 @@ Your web app is started and listening at [[http://localhost:3000]]. When you mak
 
 *** Automatic
 
-The ~boot-system~ task allows you to automate all of the above. 
+The ~boot-system~ task allows you to automate all of the above.
 
 #+BEGIN_SRC clojure
 (system :sys #'dev-system :auto-start true :hot-reload true :files ["handler.clj"])
 #+END_SRC
 
-The ~auto-start~ option takes care of starting the app the first time. Your system will automatically be reset after editing ~handler.clj~. Changes elsewhere do not require a system restart, and are available via namespace reloading everytime you save your work. 
+The ~auto-start~ option takes care of starting the app the first time. Your system will automatically be reset after editing ~handler.clj~. Changes elsewhere do not require a system restart, and are available via namespace reloading everytime you save your work.
 
-*Note:* The ~build.boot~ in this repo already contains those options. 
+*Note:* The ~build.boot~ in this repo already contains those options.
 
 ** Demo
 
 A demo video that tries to demonstrate how developing for the web can be a liberating and seamless experience.
- 
+
 #+HTML: <a href="http://www.youtube.com/watch?feature=player_embedded&v=eoxsSrFK_Is" target="_blank"><img src="http://img.youtube.com/vi/eoxsSrFK_Is/0.jpg" alt="Holy Grail demo" width="240" height="180" border="10" /></a>
 
 Do you feel the creative juices flow? Are you ready for endless hours of sheer creative output?
