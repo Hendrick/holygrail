@@ -10,7 +10,8 @@
 
 (defsystem dev-system
   [:web (new-web-server (Integer. (env :http-port)) app)
-   :datomic (new-datomic-db (env :datomic-uri))])
+   :datomic (new-datomic-db (env :datomic-uri))
+   :repl-server (new-repl-server (Integer. (env :repl-port)))])
 
 (defsystem prod-system
   [:web (new-web-server (Integer. (env :http-port)) app)

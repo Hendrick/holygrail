@@ -71,6 +71,7 @@
   []
   (comp
    (environ :env {:http-port "3000"
+                  :repl-port "3009"
                   :datomic-uri (str "datomic:mem://" (d/squuid))
                   :schema-path "schema.edn"
                   :seed-path "seed.edn"})
@@ -87,6 +88,7 @@
   []
   (comp
    (environ :env {:http-port "3000"
+                  :repl-port "3009"
                   :datomic-uri (str "datomic:mem://" (d/squuid))
                   :schema-path "schema.edn"
                   :seed-path "seed.edn"})
@@ -98,8 +100,11 @@
   "Run a prod system from the command line"
   []
   (comp
-   (environ :env {:http-port 8008
-                  :repl-port 8009})
+   (environ :env {:http-port "8008"
+                  :repl-port "8009"
+                  :datomic-uri (str "datomic:mem://" (d/squuid)) ; FIXME!
+                  :schema-path "schema.edn"
+                  :seed-path "seed.edn"})
    (cljs :optimizations :advanced)
    (run :main-namespace "holy-grail.core" :arguments [#'prod-system])
    (wait)))
