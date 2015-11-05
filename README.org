@@ -21,8 +21,8 @@ $ boot dev
 
 ** Ideas to Implement
 *** TODO Task to autodownload Datomic if it's not installed locally
-*** TODO Add Datomic component
-*** TODO Seed Datomic in-memory database for local development
+*** TODO Task for testing
+*** TODO Investigate option to not seed on every change
 
 ** Principle of operation
 *** Manual
