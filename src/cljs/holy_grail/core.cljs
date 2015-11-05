@@ -7,7 +7,8 @@
 (defn handler
   "Handle RESPONSE from server"
   [response]
-  (reset! peeps response))
+  (let [rappers (shuffle response)]
+    (reset! peeps rappers)))
 
 (defn error-handler
   "Handle ERROR-RESPONSE from server"
