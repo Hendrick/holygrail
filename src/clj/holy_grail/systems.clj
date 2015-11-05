@@ -5,10 +5,12 @@
    [system.core :refer [defsystem]]
    (system.components
     [immutant-web :refer [new-web-server]]
-    [repl-server :refer [new-repl-server]])))
+    [repl-server :refer [new-repl-server]]
+    [datomic :refer [new-datomic-db]])))
 
 (defsystem dev-system
-  [:web (new-web-server (Integer. (env :http-port)) app)])
+  [:web (new-web-server (Integer. (env :http-port)) app)
+   :datomic (new-datomic-db (env :datomic-uri))])
 
 (defsystem prod-system
   [:web (new-web-server (Integer. (env :http-port)) app)
