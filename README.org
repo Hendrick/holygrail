@@ -11,18 +11,34 @@ This demonstrates the *holy grail* workflow for web development the way I envisi
 
 This workflow is built on top of [[http://boot-clj.com/][Boot]], a build tool, and [[https://github.com/danielsz/system/tree/master/examples/boot][system]], a component library.
 
+** Requirements
+1. `boot`
+2. Datomic
+
 ** Installation
-Clone this repo, cd into it and start the development pipeline build.
+Clone this repo, `cd` into it, and start the development pipeline build.
 #+BEGIN_SRC shell
 $ git clone git@github.com:Hendrick/holygrail.git
 $ cd holygrail
 $ boot dev
 #+END_SRC
 
-** Ideas to Implement
+** What's Happening
+`boot dev` runs the following tasks:
+
+1. Sets up environment variables with `environ`
+2. Creates a file watcher
+3. Creates a `dev-system` that reloads when `handler.clj` changes
+4. Sets up to reload when you change a `cljs` file
+5. Sets up `cljs` compliation
+6. Sets up a REPL
+7. Ensures that your Datomic schema is transacted
+8. Seeds your Datomic database
+
+** Things TODO
 - Task to autodownload Datomic if it's not installed locally
-- TODO Task for testing
-- TODO Investigate option to not seed on every change
+- Task for testing
+- Investigate option to not seed on every change
 
 ** Principle of operation
 *** Manual
