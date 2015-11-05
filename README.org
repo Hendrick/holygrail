@@ -23,6 +23,12 @@ $ cd holygrail
 $ boot dev
 #+END_SRC
 
+** Testing
+To test:
+#+BEGIN_SRC shell
+$ boot test
+#+END_SRC
+
 ** What's Happening
 `boot dev` runs the following tasks:
 
