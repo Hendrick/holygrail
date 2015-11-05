@@ -1,2 +1,8 @@
 [{:db/id #db/id [:db.part/user]
-  :person/name "O'Shea Jackson"}]
+  :person/name "O'Shea Jackson"}
+ {:db/id #db/id [:db.part/user]
+  :person/name "Calvin Broadus"}
+ {:db/id #db/id [:db.part/user]
+  :person/name "William Drayton"}
+ { :db/id #db/id [:db.part/user]
+  :person/name "Carleton Ridenhour"}]
