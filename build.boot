@@ -1,6 +1,9 @@
 (set-env!
- :source-paths   #{"src/cljs" "src/clj" "src/system"}
+ :source-paths   #{"src/cljs" "src/clj" "src/system" "test"}
  :resource-paths #{"resources"}
+ :repositories #(conj % '["my.datomic.com" {:url "https://my.datomic.com/repo"
+                                            :username "larry.staton@hendrickauto.com"
+                                            :password "90a5d27d-5a08-4e56-b57a-12dd57592ee2"}])
  :dependencies '[[org.clojure/clojure "1.7.0"]
                  [org.clojure/clojurescript "1.7.166"]
 
@@ -17,8 +20,9 @@
                  [org.immutant/web "2.1.0"]
                  [ring/ring-defaults "0.1.5"]
                  [compojure "1.4.0"]
-                 [org.clojure/tools.nrepl "0.2.11"]
+                 [org.clojure/tools.nrepl "0.2.12"]
                  [com.cognitect/transit-clj "0.8.285"]
+                 [com.taoensso/timbre "4.1.4"]
 
                  ; database
                  [com.datomic/datomic-pro "0.9.5327" :exclusions [joda-time]]
@@ -31,6 +35,7 @@
 (require
  '[adzerk.boot-cljs      :refer [cljs]]
  '[adzerk.boot-reload    :refer [reload]]
+ '[adzerk.boot-test      :refer [test]]
  '[reloaded.repl         :refer [init start stop go reset]]
  '[holy-grail.systems    :refer [dev-system prod-system]]
  '[environ.boot          :refer [environ]]
