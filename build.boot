@@ -30,7 +30,10 @@
 
                  ; client
                  [cljs-ajax "0.5.1"]
-                 [reagent "0.5.1"]])
+                 [reagent "0.5.1"]
+
+                 ; testing
+                 [org.clojure/test.check "0.8.2"]])
 
 (require
  '[adzerk.boot-cljs      :refer [cljs]]

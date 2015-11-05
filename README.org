@@ -36,9 +36,8 @@ $ boot dev
 8. Seeds your Datomic database
 
 ** Things TODO
-- Task to autodownload Datomic if it's not installed locally
+- Task to autodownload Datomic if it's not installed locally?
 - Investigate option to not seed on every change
-- Use test.check
 - Test migration of conformity with `dev-system`
 
 ** Principle of operation
