@@ -3,5 +3,12 @@
             :db/ident :person/name
             :db/valueType :db.type/string
             :db/cardinality :db.cardinality/one
-            :db/index false
+            :db/index true
+            :db.install/_attribute :db.part/db}]]}
+ :holy-grail/v2
+  {:txes [[{:db/id #db/id[:db.part/db]
+            :db/ident :person/rapper
+            :db/valueType :db.type/string
+            :db/cardinality :db.cardinality/one
+            :db/index true
             :db.install/_attribute :db.part/db}]]}}

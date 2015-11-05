@@ -1,8 +1,7 @@
 * Holy grail
 
 #+BEGIN_QUOTE
- Well, on second thought, let's not go to Camelot -- it is
-a silly place. — King Arthur
+ Well, on second thought, let's not go to Camelot -- it is a silly place. — King Arthur
 #+END_QUOTE
 
 ** What is it?
@@ -44,7 +43,7 @@ $ boot test
 ** Things TODO
 - Task to autodownload Datomic if it's not installed locally?
 - Investigate option to not seed on every change
-- Test migration of conformity with `dev-system`
+- Use datascript for client-side
 
 ** Principle of operation
 *** Manual

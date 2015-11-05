@@ -1,8 +1,12 @@
 [{:db/id #db/id [:db.part/user]
-  :person/name "O'Shea Jackson"}
+  :person/name "O'Shea Jackson"
+  :person/rapper "Ice Cube"}
  {:db/id #db/id [:db.part/user]
-  :person/name "Calvin Broadus"}
+  :person/name "Calvin Broadus"
+  :person/rapper "Snoop Dogg"}
  {:db/id #db/id [:db.part/user]
-  :person/name "William Drayton"}
+  :person/name "William Drayton"
+  :person/rapper "Flava Flav"}
  { :db/id #db/id [:db.part/user]
-  :person/name "Carleton Ridenhour"}]
+  :person/name "Carleton Ridenhour"
+  :person/rapper "Chuck D."}]
