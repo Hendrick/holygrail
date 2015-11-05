@@ -20,9 +20,9 @@ $ boot dev
 #+END_SRC
 
 ** Ideas to Implement
-*** TODO Task to autodownload Datomic if it's not installed locally
-*** TODO Task for testing
-*** TODO Investigate option to not seed on every change
+- Task to autodownload Datomic if it's not installed locally
+- TODO Task for testing
+- TODO Investigate option to not seed on every change
 
 ** Principle of operation
 *** Manual
