@@ -36,12 +36,10 @@ $ boot dev
 8. Seeds your Datomic database
 
 ** Things TODO
-- Use `my.datomic.com` repository for Datomic
-- Use `timbre` for logging
-- Get rid of SLF4J output
 - Task to autodownload Datomic if it's not installed locally
-- Task for testing
 - Investigate option to not seed on every change
+- Use test.check
+- Test migration of conformity with `dev-system`
 
 ** Principle of operation
 *** Manual
