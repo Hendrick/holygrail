@@ -38,22 +38,39 @@
   (let [tmp (boot.core/tmp-dir!)]
     (boot.core/with-pre-wrap fileset
       (boot.core/empty-dir! tmp)
+      (println "Ensuring schema...")
       (let [ds (read-string (slurp (boot.core/tmp-file (first (boot.core/by-name [(env :schema-path)] (user-files fileset))))))
             dc (d/connect (env :datomic-uri))]
         (conformity/ensure-conforms dc ds))
+      (commit! fileset))))
+
+(deftask seed-database
+  "Seed the database with some data"
+  []
+  (let [tmp (boot.core/tmp-dir!)]
+    (boot.core/with-pre-wrap fileset
+      (boot.core/empty-dir! tmp)
+      (println "Seeding database...")
+      (let [sd (read-string (slurp (boot.core/tmp-file (first (boot.core/by-name [(env :seed-path)] (user-files fileset))))))
+            dc (d/connect (env :datomic-uri))]
+        (d/transact-async dc sd))
       (commit! fileset))))
 
 (deftask dev
   "Run a restartable system in the REPL"
   []
   (comp
-   (environ :env {:http-port "3000" :datomic-uri (str "datomic:mem://" (d/squuid)) :schema-path "schema.edn"})
+   (environ :env {:http-port "3000"
+                  :datomic-uri (str "datomic:mem://" (d/squuid))
+                  :schema-path "schema.edn"
+                  :seed-path "seed.edn"})
    (watch :verbose true)
    (system :sys #'dev-system :auto-start true :hot-reload true :files ["handler.clj"])
    (reload)
    (cljs :source-map true :optimizations :none)
    (repl :server true)
-   (ensure-schema)))
+   (ensure-schema)
+   (seed-database)))
 
 (deftask dev-run
   "Run a dev system from the command line"
