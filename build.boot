@@ -5,19 +5,19 @@
                                             :username "larry.staton@hendrickauto.com"
                                             :password "90a5d27d-5a08-4e56-b57a-12dd57592ee2"}])
  :dependencies '[[org.clojure/clojure "1.7.0"]
-                 [org.clojure/clojurescript "1.7.166"]
+                 [org.clojure/clojurescript "1.7.228"]
 
-                 [boot/core              "2.3.0"               :scope "test"]
-                 [adzerk/boot-cljs       "1.7.170-1"           :scope "test"]
-                 [adzerk/boot-cljs-repl  "0.2.1-SNAPSHOT"      :scope "test"]
-                 [adzerk/boot-reload     "0.4.1"               :scope "test"]
-                 [adzerk/boot-test       "1.0.4"               :scope "test"]
+                 [boot/core              "2.5.5"               :scope "test"]
+                 [adzerk/boot-cljs       "1.7.228-1"           :scope "test"]
+                 [adzerk/boot-cljs-repl  "0.3.0"               :scope "test"]
+                 [adzerk/boot-reload     "0.4.4"               :scope "test"]
+                 [adzerk/boot-test       "1.1.0"               :scope "test"]
                  [environ "1.0.1"]
                  [boot-environ "1.0.1"]
 
                  ; server
-                 [org.danielsz/system "0.2.0-SNAPSHOT"]
-                 [org.immutant/web "2.1.0"]
+                 [org.danielsz/system "0.2.0"]
+                 [org.immutant/web "2.1.2"]
                  [ring/ring-defaults "0.1.5"]
                  [compojure "1.4.0"]
                  [org.clojure/tools.nrepl "0.2.12"]
@@ -26,10 +26,10 @@
 
                  ; database
                  [com.datomic/datomic-pro "0.9.5327" :exclusions [joda-time]]
-                 [io.rkn/conformity "0.3.5" :exclusions [com.datomic/datomic-free]]
+                 [io.rkn/conformity "0.4.0" :exclusions [com.datomic/datomic-free]]
 
                  ; client
-                 [cljs-ajax "0.5.1"]
+                 [cljs-ajax "0.5.3"]
                  [reagent "0.5.1"]
 
                  ; testing
