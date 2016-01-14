@@ -44,6 +44,7 @@ $ boot test
 - Task to autodownload Datomic if it's not installed locally?
 - Investigate option to not seed on every change
 - Use datascript for client-side
+- Add devcards!
 
 ** Principle of operation
 *** Manual
