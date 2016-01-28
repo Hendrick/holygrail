@@ -67,6 +67,14 @@
  '[datomic.api           :as d]
  '[io.rkn.conformity     :as conformity])
 
+(task-options!
+ environ {:env {:http-port "3000"
+                :repl-port "3009"
+                :datomic-uri "datomic:dev://localhost:4334/athena"
+                :schema-path "schema.edn"
+                :seed-path "seed.edn"}}
+ cljs {:source-map true :optimizations :none})
+
 ;; See http://hoplon.discoursehosting.net/t/question-about-data-readers-with-datomic-and-boot/99/7
 (boot.core/load-data-readers!)
 
@@ -98,15 +106,11 @@
   "Run a restartable system in the REPL"
   []
   (comp
-   (environ :env {:http-port "3000"
-                  :repl-port "3009"
-                  :datomic-uri (str "datomic:mem://" (d/squuid))
-                  :schema-path "schema.edn"
-                  :seed-path "seed.edn"})
+   (environ)
    (watch :verbose true)
    (system :sys #'dev-system :auto-start true :hot-reload true :files ["handler.clj"])
    (reload)
-   (cljs :source-map true :optimizations :none)
+   (cljs)
    (repl :server true)
    (ensure-schema)
    (seed-database)))
@@ -115,12 +119,8 @@
   "Run a dev system from the command line"
   []
   (comp
-   (environ :env {:http-port "3000"
-                  :repl-port "3009"
-                  :datomic-uri (str "datomic:mem://" (d/squuid))
-                  :schema-path "schema.edn"
-                  :seed-path "seed.edn"})
-   (cljs :source-map true :optimizations :none)
+   (environ)
+   (cljs)
    (run :main-namespace "holy-grail.core" :arguments [#'dev-system])
    (wait)))
 
