@@ -13,7 +13,8 @@
       (System/exit 1))))
 
 ;; Requires needed to set the boot environment below
-(require '[clojure.java.io :as io])
+(require '[boot.from.backtick :refer [template]]
+         '[clojure.java.io :as io])
 
 (set-env!
  :source-paths   #{"src/cljs" "src/clj" "src/system" "test"}
@@ -22,36 +23,37 @@
                                               :username datomic-user
                                               :password datomic-pass}]
                            ["local" (-> "repository" io/file io/as-url str)]])
- :dependencies '[[org.clojure/clojure "1.8.0"]
-                 [org.clojure/clojurescript "1.7.228"]
+ :dependencies (template
+                [[org.clojure/clojure        "1.8.0"]
+                 [org.clojure/clojurescript  "1.7.228"]
 
-                 [boot/core              "2.5.5"               :scope "test"]
-                 [adzerk/boot-cljs       "1.7.228-1"           :scope "test"]
-                 [adzerk/boot-cljs-repl  "0.3.0"               :scope "test"]
-                 [adzerk/boot-reload     "0.4.4"               :scope "test"]
-                 [adzerk/boot-test       "1.1.0"               :scope "test"]
-                 [environ "1.0.2"]
-                 [boot-environ "1.0.2"]
-
+                 ; boot tasks
+                 [boot/core                         "2.5.5"           :scope "test"]
+                 [adzerk/boot-cljs                  "1.7.228-1"       :scope "test"]
+                 [adzerk/boot-cljs-repl             "0.3.0"           :scope "test"]
+                 [adzerk/boot-reload                "0.4.4"           :scope "test"]
+                 [adzerk/boot-test                  "1.1.0"           :scope "test"]
+                 [boot-environ                      "1.0.1"           :scope "test"]
                  ; server
-                 [org.danielsz/system "0.2.0"]
-                 [org.immutant/web "2.1.2"]
-                 [ring/ring-defaults "0.1.5"]
-                 [compojure "1.4.0"]
-                 [org.clojure/tools.nrepl "0.2.12"]
-                 [com.cognitect/transit-clj "0.8.285"]
-                 [com.taoensso/timbre "4.2.1"]
+                 [org.danielsz/system        "0.2.0"]
+                 [org.immutant/web           "2.1.2"]
+                 [ring/ring-defaults         "0.1.5"]
+                 [compojure                  "1.4.0"]
+                 [environ                    "1.0.1"]
+                 [org.clojure/tools.nrepl    "0.2.12"]
+                 [com.cognitect/transit-clj  "0.8.285"]
+                 [com.taoensso/timbre        "4.2.1"]
 
                  ; database
-                 [com.datomic/datomic-pro "0.9.5327" :exclusions [joda-time]]
-                 [io.rkn/conformity "0.4.0" :exclusions [com.datomic/datomic-free]]
+                 [com.datomic/datomic-pro  ~datomic-ver  :exclusions [joda-time org.slf4j/slf4j-nop]]
+                 [io.rkn/conformity        "0.4.0"       :exclusions [com.datomic/datomic-free]]
 
                  ; client
-                 [cljs-ajax "0.5.3"]
-                 [reagent "0.5.1"]
+                 [cljs-ajax  "0.5.3"]
+                 [reagent    "0.5.1"]
 
                  ; testing
-                 [org.clojure/test.check "0.9.0"]])
+                 [org.clojure/test.check  "0.9.0"]]))
 
 (require
  '[adzerk.boot-cljs      :refer [cljs]]
