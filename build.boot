@@ -73,11 +73,11 @@
 (deftask ensure-schema
   "Ensure that Datomic transacted our schema"
   []
-  (let [tmp (boot.core/tmp-dir!)]
-    (boot.core/with-pre-wrap fileset
-      (boot.core/empty-dir! tmp)
+  (let [tmp (tmp-dir!)]
+    (with-pre-wrap fileset
+      (empty-dir! tmp)
       (println "Ensuring schema...")
-      (let [ds (read-string (slurp (boot.core/tmp-file (first (boot.core/by-name [(env :schema-path)] (user-files fileset))))))
+      (let [ds (read-string (slurp (tmp-file (first (by-name [(env :schema-path)] (user-files fileset))))))
             dc (d/connect (env :datomic-uri))]
         (conformity/ensure-conforms dc ds))
       (commit! fileset))))
@@ -85,11 +85,11 @@
 (deftask seed-database
   "Seed the database with some data"
   []
-  (let [tmp (boot.core/tmp-dir!)]
-    (boot.core/with-pre-wrap fileset
-      (boot.core/empty-dir! tmp)
+  (let [tmp (tmp-dir!)]
+    (with-pre-wrap fileset
+      (empty-dir! tmp)
       (println "Seeding database...")
-      (let [sd (read-string (slurp (boot.core/tmp-file (first (boot.core/by-name [(env :seed-path)] (user-files fileset))))))
+      (let [sd (read-string (slurp (tmp-file (first (by-name [(env :seed-path)] (user-files fileset))))))
             dc (d/connect (env :datomic-uri))]
         (d/transact-async dc sd))
       (commit! fileset))))
