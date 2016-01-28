@@ -113,7 +113,8 @@
    (cljs)
    (repl :server true)
    (ensure-schema)
-   (seed-database)))
+   (seed-database)
+   (target :no-clean true)))
 
 (deftask dev-run
   "Run a dev system from the command line"
@@ -122,6 +123,7 @@
    (environ)
    (cljs)
    (run :main-namespace "holy-grail.core" :arguments [#'dev-system])
+   (target)
    (wait)))
 
 (deftask prod-run
@@ -135,4 +137,5 @@
                   :seed-path "seed.edn"})
    (cljs :optimizations :advanced)
    (run :main-namespace "holy-grail.core" :arguments [#'prod-system])
+   (target)
    (wait)))
