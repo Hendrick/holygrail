@@ -1,9 +1,27 @@
+(def datomic-ver "0.9.5344")
+
+;; Check that the needed variables are configured
+(def required-config '[datomic-user datomic-pass datomic-license])
+
+(let [msgs (->> required-config
+                (map #(if-not (resolve %) (format "`%s'" %)))
+                (filter identity)
+                (clojure.string/join " and "))]
+  (if-not (empty? msgs)
+    (do
+      (println "Please define" msgs "in profile.boot first!")
+      (System/exit 1))))
+
+;; Requires needed to set the boot environment below
+(require '[clojure.java.io :as io])
+
 (set-env!
  :source-paths   #{"src/cljs" "src/clj" "src/system" "test"}
  :resource-paths #{"resources"}
- :repositories #(conj % '["my.datomic.com" {:url "https://my.datomic.com/repo"
-                                            :username "larry.staton@hendrickauto.com"
-                                            :password "90a5d27d-5a08-4e56-b57a-12dd57592ee2"}])
+ :repositories #(concat % [["my.datomic.com" {:url "https://my.datomic.com/repo"
+                                              :username datomic-user
+                                              :password datomic-pass}]
+                           ["local" (-> "repository" io/file io/as-url str)]])
  :dependencies '[[org.clojure/clojure "1.8.0"]
                  [org.clojure/clojurescript "1.7.228"]
 
