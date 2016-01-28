@@ -4,7 +4,7 @@
  :repositories #(conj % '["my.datomic.com" {:url "https://my.datomic.com/repo"
                                             :username "larry.staton@hendrickauto.com"
                                             :password "90a5d27d-5a08-4e56-b57a-12dd57592ee2"}])
- :dependencies '[[org.clojure/clojure "1.7.0"]
+ :dependencies '[[org.clojure/clojure "1.8.0"]
                  [org.clojure/clojurescript "1.7.228"]
 
                  [boot/core              "2.5.5"               :scope "test"]
@@ -12,8 +12,8 @@
                  [adzerk/boot-cljs-repl  "0.3.0"               :scope "test"]
                  [adzerk/boot-reload     "0.4.4"               :scope "test"]
                  [adzerk/boot-test       "1.1.0"               :scope "test"]
-                 [environ "1.0.1"]
-                 [boot-environ "1.0.1"]
+                 [environ "1.0.2"]
+                 [boot-environ "1.0.2"]
 
                  ; server
                  [org.danielsz/system "0.2.0"]
@@ -22,7 +22,7 @@
                  [compojure "1.4.0"]
                  [org.clojure/tools.nrepl "0.2.12"]
                  [com.cognitect/transit-clj "0.8.285"]
-                 [com.taoensso/timbre "4.1.4"]
+                 [com.taoensso/timbre "4.2.1"]
 
                  ; database
                  [com.datomic/datomic-pro "0.9.5327" :exclusions [joda-time]]
@@ -33,7 +33,7 @@
                  [reagent "0.5.1"]
 
                  ; testing
-                 [org.clojure/test.check "0.8.2"]])
+                 [org.clojure/test.check "0.9.0"]])
 
 (require
  '[adzerk.boot-cljs      :refer [cljs]]
