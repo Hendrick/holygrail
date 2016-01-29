@@ -1,3 +1,5 @@
 .DS_Store
 .nrepl-*
-/target
+repository/
+target/
+profile.boot

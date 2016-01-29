@@ -1,0 +1,3 @@
+(def datomic-user "you@yourmail.here")
+(def datomic-pass "some-uuidsting-fromthe-datomicsite")
+(def datomic-license "youreallyreallylongdatomiclicensekeycopiedfromthedatomicsiteallononelinewithnospacesorbackslashesgoeshere")
